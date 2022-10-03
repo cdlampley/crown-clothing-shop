@@ -176,9 +176,15 @@ $main-color: black;
     h2 {
         margin: 10px 0;
     }
+    .buttons-container {
+        display: flex;
+       justify-content: space-between;
+    }
 }
 
+
 /*** Button Styles ***/
+
 .button-container {
     min-width: 165px;
     width: auto;
@@ -225,4 +231,11 @@ $main-color: black;
       }
     }
   }
-  
+
+  /*** Login Page ***/
+  .login-container {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    margin: 30px auto;
+  }
