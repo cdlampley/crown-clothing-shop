@@ -2,15 +2,10 @@ import {Routes, Route} from 'react-router-dom'
 import Navigation from './components/routes/Navigation'
 import Home from './components/routes/Home'
 import AccountLogin from './components/routes/AccountLogin'
+import Shop from './components/routes/Shop'
 import './app.scss'
 
-const Shop = () => {
-  return(
-    <div>
-      <h1>Shop Here</h1>
-    </div>
-  )
-}
+
 
 const App = () => {
   return (

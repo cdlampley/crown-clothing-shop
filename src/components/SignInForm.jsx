@@ -1,8 +1,11 @@
-import { useState, useContext } from 'react'
-import { createUserDocumentFromAuth, signInWithGooglePopup, signInAuthUserWithEmailAndPassword } from '../utils/firebase/firebase.utils'
+import { useState } from 'react'
+import {
+    createUserDocumentFromAuth,
+    signInWithGooglePopup,
+    signInAuthUserWithEmailAndPassword
+} from '../utils/firebase/firebase.utils'
 import FormInput from './FormInput'
 import Button from './Button'
-import { UserContext } from '../context/user.context'
 
 const defaultFormFields = {
     email: '',
@@ -13,24 +16,20 @@ const SignInForm = () => {
     const [formFields, setFormFieds] = useState(defaultFormFields)
     const { email, password } = formFields
 
-    const { setCurrentUser } = useContext(UserContext)
-
     const resetFormFields = () => {
         setFormFieds(defaultFormFields)
     }
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup()
-        await createUserDocumentFromAuth(user)
+        await signInWithGooglePopup()
     }
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         try {
-            const {user} = await signInAuthUserWithEmailAndPassword(
+            const { user } = await signInAuthUserWithEmailAndPassword(
                 email,
                 password
             )
-            setCurrentUser(user)
 
             resetFormFields()
         } catch (error) {
@@ -38,7 +37,7 @@ const SignInForm = () => {
                 case 'auth/wrong-password':
                     alert('Cannot login, wrong password given')
                     break
-                
+
                 case 'auth/user-not-found':
                     alert('Cannot login, user not found')
                     break
