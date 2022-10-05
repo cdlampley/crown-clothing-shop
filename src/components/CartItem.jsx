@@ -1,8 +1,5 @@
-
-
 const CartItem = ({ cartItem }) => {
     const { name, imageUrl, price, quantity } = cartItem
-
 
     return (
 
