@@ -5,11 +5,9 @@ import Button from './Button'
 import CartItem from './CartItem'
 
 const CartDropDown = () => {
-
     const { cartItems } = useContext(CartContext)
 
     const navigate = useNavigate()
-
     const goToCheckoutPage = () => {
         navigate('/checkout')
     }
