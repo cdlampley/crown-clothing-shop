@@ -1,14 +1,15 @@
 import SignUpForm from '../SignUpForm'
 import SignInForm from '../SignInForm'
+import { LoginContainer } from '../../styles/account-login.styles'
 
 
 const AccountLogin = () => {
 
     return (
-        <div className="login-container">
+        <LoginContainer>
             <SignInForm />
             <SignUpForm />
-        </div>
+        </LoginContainer>
     )
 }
 

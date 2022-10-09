@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import {
-    createUserDocumentFromAuth,
     signInWithGooglePopup,
     signInAuthUserWithEmailAndPassword
 } from '../utils/firebase/firebase.utils'
 import FormInput from './FormInput'
-import Button from './Button'
+import Button, { button_types } from './Button'
+import { SignUpContainer, ButtonsContainer } from '../styles/account-login.styles'
 
 const defaultFormFields = {
     email: '',
@@ -26,7 +26,7 @@ const SignInForm = () => {
         event.preventDefault()
 
         try {
-            const { user } = await signInAuthUserWithEmailAndPassword(
+            await signInAuthUserWithEmailAndPassword(
                 email,
                 password
             )
@@ -56,7 +56,7 @@ const SignInForm = () => {
     }
 
     return (
-        <div className="sign-up-container">
+        <SignUpContainer>
             <h2>Already have an account?</h2>
             <span>Sign in with your email and password</span>
             <form onSubmit={handleSubmit}>
@@ -76,12 +76,16 @@ const SignInForm = () => {
                     value={password}
                     required
                 />
-                <div className="buttons-container">
+                <ButtonsContainer>
                     <Button type="submit">Sign In</Button>
-                    <Button type="button" buttonType="google" onClick={signInWithGoogle}>Google Sign In</Button>
-                </div>
+                    <Button type="button"
+                    buttonType={button_types.google}
+                    onClick={signInWithGoogle}
+                    >Google Sign In
+                    </Button>
+                </ButtonsContainer>
             </form>
-        </div>
+        </SignUpContainer>
     )
 }
 

@@ -4,7 +4,6 @@ import Home from './components/routes/Home'
 import AccountLogin from './components/routes/AccountLogin'
 import Shop from './components/routes/Shop'
 import Checkout from './components/routes/Checkout'
-import './app.scss'
 
 const App = () => {
   return (
