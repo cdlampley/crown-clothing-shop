@@ -1,6 +1,13 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects'
 import { USER_ACTION_TYPES } from './user.types'
-import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, signOutSuccess, signOutFailed } from './user.action'
+import { 
+    signInSuccess, 
+    signInFailed, 
+    signUpSuccess, 
+    signUpFailed, 
+    signOutSuccess, 
+    signOutFailed 
+} from './user.action'
 import {
     getCurrentUser,
     createUserDocumentFromAuth,
@@ -48,10 +55,6 @@ export function* signOut() {
     }
 }
 
-export function* signInAfterSignUp({ payload: user, additionalDetails }) {
-    yield call(getSnapshotFromUserAuth, user, additionalDetails)
-}
-
 export function* signInWithEmail({ payload: { email, password } }) {
     try {
         const { user } = yield call(
@@ -85,6 +88,10 @@ export function* isUserAuth() {
     } catch (error) {
         yield put(signInFailed(error))
     }
+}
+
+export function* signInAfterSignUp({ payload: user, additionalDetails }) {
+    yield call(getSnapshotFromUserAuth, user, additionalDetails)
 }
 
 export function* onGoogleSignInStart() {

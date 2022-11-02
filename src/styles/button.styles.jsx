@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { SpinnerContainer } from './spinner.styles'
+import mediaStyles from './media.styles'
 
 export const BaseButton = styled.button`
     min-width: 165px;
@@ -16,14 +17,17 @@ export const BaseButton = styled.button`
     font-weight: bolder;
     border: none;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
+
     &:hover {
         background-color: white;
         color: black;
         border: 1px solid black;
     }
-    align-items: center;
+    ${mediaStyles.tablet`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    `}
 `
 
 export const GoogleButton = styled(BaseButton)`

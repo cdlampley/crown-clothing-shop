@@ -11,6 +11,7 @@ import {
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
+    sendPasswordResetEmail
 } from 'firebase/auth'
 import {
     getFirestore,
@@ -42,6 +43,7 @@ googleProvider.setCustomParameters({
 })
 
 export const auth = getAuth()
+auth.languageCode = 'it'
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider)
 
@@ -52,7 +54,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
     const batch = writeBatch(db)
 
     objectsToAdd.forEach(object => {
-        const docRef= doc(collectionRef, object.title.toLowerCase())
+        const docRef = doc(collectionRef, object.title.toLowerCase())
         batch.set(docRef, object)
     })
 
@@ -92,6 +94,19 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     }
 
     return userDocRef
+}
+
+export const passwordReset = () => {
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            // Password reset email sent!
+            // ..
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+        })
 }
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {

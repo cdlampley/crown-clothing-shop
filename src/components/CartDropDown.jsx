@@ -9,8 +9,8 @@ const CartDropDown = () => {
     const cartItems = useSelector(selectCartItems)
 
     const navigate = useNavigate()
-    const goToCheckoutPage = () => {
-        navigate('/checkout')
+    const goToShoppingBagPage = () => {
+        navigate('/shopping-bag')
     }
 
     return(
@@ -24,7 +24,7 @@ const CartDropDown = () => {
                     )
                 }
             </CartItems>
-            <Button onClick={goToCheckoutPage}>Checkout</Button>
+            <Button onClick={goToShoppingBagPage}>Shopping Bag</Button>
         </CartDropDownContainer>
     )
 }

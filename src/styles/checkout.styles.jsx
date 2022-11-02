@@ -1,12 +1,18 @@
 import styled from 'styled-components'
+import mediaStyles from './media.styles'
 
 export const CheckoutContainer = styled.div`
-    width: 55%;
-    min-height: 90vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 50px auto 0;
+    flex-wrap: wrap;
+    ${mediaStyles.tablet`
+        width: 55%;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        margin: 50px auto 0;
+    `}
 `
 
 export const CheckoutHeader = styled.div`
